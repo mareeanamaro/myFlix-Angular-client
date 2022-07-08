@@ -1,0 +1,35 @@
+<app-navbar></app-navbar>
+<div class="">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          Profile Information
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p><b>Username:</b> {{user.Username}}</p>
+        <p><b>Email:</b> {{user.Email}}</p>
+        <p><b>Birthday:</b> {{user.Birthday | date }}</p>
+      </mat-card-content>
+
+
+      <mat-card-actions>
+        <button
+        mat-raised-button
+        (click)="openEditProfile()"
+        color="primary"
+        >
+        <mat-icon>edit</mat-icon>
+        Edit Profile
+        </button>
+        <button
+        mat-raised-button
+        (click)="deleteProfile()"
+        color="primary"
+        >
+        <mat-icon>delete_forever</mat-icon>
+        Delete Profile
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>

@@ -6,6 +6,8 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { FetchApiDataService } from '../fetch-api-data.service';
 // below will display notifications back to the user
 import { MatSnackBar } from '@angular/material/snack-bar';
+// import the Router module
+import { Router } from '@angular/router';
 
 // the component decorator tells angular the class below is a component
 @Component({
@@ -26,7 +28,8 @@ export class LoginFormComponent implements OnInit {
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<LoginFormComponent>,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    public router: Router
   ) { }
 
   ngOnInit(): void {
@@ -36,8 +39,9 @@ export class LoginFormComponent implements OnInit {
   // build the function responsible for sending the inputs to the backend
   loginUser(): void {
     this.fetchApiData.userLogin(this.userCredentials).subscribe((result) => {
-      localStorage.setItem('token', result.user.token);
-      localStorage.setItem('user', result.Username);
+      localStorage.setItem('token', result.token);
+      localStorage.setItem('user', result.user.Username);
+      this.router.navigate(['movies']);
       this.dialogRef.close(); // close dialog on success
       this.snackBar.open(result, 'OK', {
         duration: 2000
