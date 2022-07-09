@@ -88,7 +88,7 @@ export class FetchApiDataService {
   addFav(movieID: any): Observable<any> {
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('user');
-    return this.http.patch(apiUrl + `users/${username}/movies/${movieID}`, {
+    return this.http.patch(apiUrl + `users/${username}/movies/${movieID}`, null, {
       headers: new HttpHeaders(
       {
         Authorization: 'Bearer ' + token,

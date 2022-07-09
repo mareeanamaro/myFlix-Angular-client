@@ -43,7 +43,7 @@ export class LoginFormComponent implements OnInit {
       localStorage.setItem('user', result.user.Username);
       this.router.navigate(['movies']);
       this.dialogRef.close(); // close dialog on success
-      this.snackBar.open(result, 'OK', {
+      this.snackBar.open('You have successfully logged in', 'OK', {
         duration: 2000
       });
     },

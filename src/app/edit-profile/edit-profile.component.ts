@@ -30,14 +30,9 @@ export class EditProfileComponent implements OnInit {
       console.log(result);
       this.snackBar.open('Successfully updated profile.', 'OK', {
         duration: 2000
-      })
-      if (this.userData.username || this.userData.Password) {
-        localStorage.clear();
-        this.router.navigate(['welcome']);
-        this.snackBar.open('Please login again with your new credentials', 'OK', {
-          duration: 2000
-        })
-      }
-    })
-  }
-}
+      });
+      localStorage.clear();
+      this.router.navigate(['welcome']);
+      this.snackBar.open('Please login again with your new credentials', 'OK', {
+        duration: 2000
+    })})}}
