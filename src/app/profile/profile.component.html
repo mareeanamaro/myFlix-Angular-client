@@ -1,35 +1,53 @@
 <app-navbar></app-navbar>
+<div>
 <div class="profile-view">
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>
-          Profile Information
-        </mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <p><b>Username:</b> {{user.Username}}</p>
-        <p><b>Email:</b> {{user.Email}}</p>
-        <p><b>Birthday:</b> {{user.Birthday | date }}</p>
-      </mat-card-content>
-
-
-      <mat-card-actions>
-        <button
-        mat-raised-button
-        (click)="openEditProfile()"
-        color="primary"
-        >
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        Profile Information
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p><b>Username:</b> {{user.Username}}</p>
+      <p><b>Email:</b> {{user.Email}}</p>
+      <p><b>Birthday:</b> {{user.Birthday | date }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button (click)="openEditProfile()" color="primary">
         <mat-icon>edit</mat-icon>
         Edit Profile
-        </button>
-        <button
-        mat-raised-button
-        (click)="deleteProfile()"
-        color="primary"
-        >
+      </button>
+      <button mat-raised-button (click)="deleteProfile()" color="primary">
         <mat-icon>delete_forever</mat-icon>
         Delete Profile
-        </button>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+<h2 class="favs-header">Favorite Movies</h2>
+    <div class="fav-movies" *ngIf="displayElement; else message">
+    <mat-card *ngFor="let movie of favMovies; let i = index">
+        <mat-card-header>
+            <mat-card-title>{{movie.Title}}</mat-card-title>
+            </mat-card-header>
+            <img src="{{ movie.ImagePath }}"/>
+            <mat-card-actions>
+              <button
+              mat-button
+              class="mat-icon-button"
+              (click)="removeFromFavoriteMovies(movie._id)"
+              color="primary"
+          >
+              <mat-icon>favorite</mat-icon>
+          </button>
       </mat-card-actions>
     </mat-card>
-  </div>
+</div>
+  <ng-template #message>
+    <h2>You don't have any favourite movies in your list</h2>
+  </ng-template>
+
+</div>
+
+
+

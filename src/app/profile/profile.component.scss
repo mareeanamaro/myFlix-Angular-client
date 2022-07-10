@@ -1,9 +1,42 @@
 .profile-view {
     margin: 0 auto;
     display: flex;
-    flex: column;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding:30px
 }
 
+.favs-header {
+    text-align: center;
+}
+
+.fav-movies {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10%;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+.fav-movie-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+img {
+    width: 250px;
+    height: 350px;
+    object-fit: contain;
+}
+
+.mat-icon-button {
+    position: absolute;
+    right: 5px;
+    top: 5px;    
+}

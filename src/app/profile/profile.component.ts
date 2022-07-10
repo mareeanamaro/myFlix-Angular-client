@@ -13,6 +13,11 @@ import { EditProfileComponent } from '../edit-profile/edit-profile.component';
 export class ProfileComponent implements OnInit {
 
   user: any = {};
+  movies: any[] = [];
+  userName: any = localStorage.getItem('user');
+  favs: any = null;
+  favMovies: any[] = [];
+  displayElement: boolean = false;
 
   constructor(
     public fetchApiData: FetchApiDataService,
@@ -22,14 +27,31 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getUser()
+    this.getUser();
   }
 
   getUser(): void {
-    this.fetchApiData.getUser().subscribe((response: any) => {
-      this.user = response;
-      console.log(this.user);
-      return this.user;
+    const user = localStorage.getItem('user');
+    if(user) {
+      this.fetchApiData.getUser().subscribe((response:any) => {
+        this.user=response;
+        this.fetchApiData.getAllMovies().subscribe((response: any)=> {
+          this.movies = response;
+          this.movies.forEach((movie: any) => {
+            if(this.user.FavoriteMovies.includes(movie._id)){
+              this.favMovies.push(movie);
+              this.displayElement = true;
+            }
+          });
+        });
+      });
+    }
+  }
+
+  removeFromFavoriteMovies(id:string): void{
+    this.fetchApiData.removeFav(id).subscribe((result) => {
+      this.ngOnInit();
+      window.location.reload();
     })
   }
 
