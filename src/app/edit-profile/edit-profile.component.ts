@@ -23,6 +23,10 @@ export class EditProfileComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Access the API via a PUT request with the new user info in the request body
+   * Cleares the current local storage to avoid errors
+   */
   editUser(): void {
     console.log(this.userData);
     this.fetchApiData.editUser(this.userData).subscribe((result) => {
@@ -35,4 +39,7 @@ export class EditProfileComponent implements OnInit {
       this.router.navigate(['welcome']);
       this.snackBar.open('Please login again with your new credentials', 'OK', {
         duration: 2000
-    })})}}
+      })
+    })
+  }
+}

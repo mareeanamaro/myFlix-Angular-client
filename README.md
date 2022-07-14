@@ -2,6 +2,13 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.3
 
+# Key Features
+
+- The app opens a welcome page where users can log in or register
+- Once logged in, the user will see all the movies on the database
+- The user can access details about each movie (director info, genre info and synopsis) and can add movies to their list of favourites 
+- The user can access their profile and edit their details
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.

@@ -7,7 +7,11 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./genre-info.component.scss']
 })
 export class GenreInfoComponent implements OnInit {
-
+/**
+ * Injects data from the movie card component using the MAT_DIALOG_DATA injection token
+ * The data populates the view
+ * @param data 
+ */
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: {
@@ -17,5 +21,4 @@ export class GenreInfoComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

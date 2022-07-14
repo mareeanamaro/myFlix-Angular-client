@@ -9,7 +9,11 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class SynopsisComponent implements OnInit {
 
   constructor(
-
+ /**
+   * Injects data from the movie card component using the MAT_DIALOG_DATA injection token
+   * The data populates the view
+   * @param data
+  */
     @Inject(MAT_DIALOG_DATA)
     public data: {
       Name: string,
@@ -19,5 +23,4 @@ export class SynopsisComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

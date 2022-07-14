@@ -17,8 +17,7 @@ import { Router } from '@angular/router';
 })
 
 export class LoginFormComponent implements OnInit {
-
-  // the input decorator degfines the component's input
+  // the input decorator defines the component's input
   @Input() userCredentials = {
     Username: '',
     Password: ''
@@ -35,8 +34,10 @@ export class LoginFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
-  // build the function responsible for sending the inputs to the backend
+  /**
+     * Login function
+     * When successful, routes to /movies
+   */
   loginUser(): void {
     this.fetchApiData.userLogin(this.userCredentials).subscribe((result) => {
       localStorage.setItem('token', result.token);
@@ -51,6 +52,6 @@ export class LoginFormComponent implements OnInit {
         this.snackBar.open(result, 'OK', {
           duration: 2000
         })
-    })
+      })
   }
 }
